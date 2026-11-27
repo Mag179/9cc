@@ -47,10 +47,10 @@ void expect(char op) {
 int expect_number() {
   if (token->kind != TK_NUM) {
     error("数ではありません");
-    int val = token->val;
-    token = token->next;
-    return val;
   }
+  int val = token->val;
+  token = token->next;
+  return val;
 }
 
 bool at_eof() { return token->kind == TK_EOF; }
@@ -111,7 +111,7 @@ int main(int argc, char **argv) {
       continue;
     }
 
-    consume('-');
+    expect('-');
     printf("  sub rax, %d\n", expect_number());
   }
 
